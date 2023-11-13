@@ -15,3 +15,10 @@ También podemos agilizar el trabajo ejecutando directamente un comando sin abri
 
 >docker exec -it (nombre_del_contenedor_o_el_id) (comando_que_queremos_utilizar)
 
+### 2. En el contenedor anterior con que opciones tiene que haber sido arrancado para poder interactuar con las entradas y salidas del contenedor
+
+Si queremos interactuar con las entradas y salidas del contenedor, debemos iniciarlo con los parámetros que se muestran a continuación:
+
+>docker run -i -t -a stdin -a stdout -a stderr
+
+Esto nos permitirá interactuar de manera completa con el contenedor, proporcionando entrada y viendo tanto la salida estándar como la de error.
