@@ -64,4 +64,45 @@ services:
 
 networks:
   bind9_red:
+    external: true
 ```
+
+### 4. ¿Qué hay que añadir al fichero anterior para que un contenedor tenga la IP fija?
+
+Para que un contenedor tenga una dirección IPv4 fija debemos añadir dentro del ```docker-compose.yml```, en el apartado **networks** justo debajo de **bind9_red**, el apartado ```ipv4_address: (dirección_ip_que_queremos_asignar)```.
+
+**Ejemplo:**
+
+```yml
+services:
+  bind9_1:
+    container_name: bind9_1
+    image: ubuntu/bind9
+    platform: linux/arm64
+    ports:
+      - "53:53"
+    networks:
+      bind9_red:
+        ipv4_address: 192.168.1.10
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+    
+  bind9_2:
+    container_name: bind9_2
+    image: ubuntu/bind9
+    platform: linux/arm64
+    ports:
+      - "53:53"
+    networks:
+      bind9_red:
+        ipv4_address: 192.168.1.11
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+
+networks:
+  bind9_red:
+    external: true
+```
+
