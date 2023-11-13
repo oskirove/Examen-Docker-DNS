@@ -120,3 +120,9 @@ Al lanzar el anterior comando deberia mostrarnos por pantalla la siguiente infor
 bind9_1: 192.168.1.10/24
 bind9_2: 192.168.1.11/24
 ```
+
+### 6. ¿Cual es la funcionalidad del apartado "ports" en docker compose?
+
+La funcionalidad que tiene el apartado ports en docker compose es realizar un mapeo de puertos entre un contenedor que tengamos creado y la máquina host.
+
+En sintesis, vinculamos el puerto 53 del contenedor con el puerto 53 de la máquina host.
