@@ -106,3 +106,17 @@ networks:
     external: true
 ```
 
+### 5. ¿Que comando de consola puedo usar para saber las ips de los contenedores anteriores? Filtra todo lo que puedas la salida.
+
+Para saber las direcciones ip de los contenedores mencionados anteriormente podemos usar el comando ```docker network inspect``` con el parámetro ```--format``` para filtrar la busqueda.
+
+**Ejemplo:**
+
+>docker network inspect --format='{{range .Containers}}{{.Name}}: {{.IPv4Address}}{{end}}' bind9_red
+
+Al lanzar el anterior comando deberia mostrarnos por pantalla la siguiente información:
+
+```bash
+bind9_1: 192.168.1.10/24
+bind9_2: 192.168.1.11/24
+```
