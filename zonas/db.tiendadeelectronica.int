@@ -1,0 +1,13 @@
+$TTL 604800   ; 1 week
+@   IN  SOA ns1.tiendadeelectronica.int. some.email.address. (
+              2023111301 ; Serial
+              604800     ; Refresh (1 week)
+              86400      ; Retry (1 day)
+              2419200    ; Expire (4 weeks)
+              604800 )   ; Negative Cache TTL (1 week)
+
+@       IN      NS      ns1.tiendadeelectronica.int.
+
+www     IN      A       172.16.0.1
+owncloud IN      CNAME   www
+@       IN      TXT     "1234ASDF"

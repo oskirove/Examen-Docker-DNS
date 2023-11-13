@@ -1,0 +1,26 @@
+services:
+  bind9_1:
+    container_name: bind9_1
+    image: ubuntu/bind9
+    platform: linux/arm64
+    ports:
+      - "54:53"
+    networks:
+      bind9_red:
+        ipv4_address: 172.16.0.1
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+    
+  bind9_2:
+    container_name: bind9_2
+    image: ubuntu/bind9
+    platform: linux/arm64
+    ports:
+      - "55:53"
+    networks:
+      bind9_red:
+        ipv4_address: 172.16.0.2
+networks:
+  bind9_red:
+    external: true

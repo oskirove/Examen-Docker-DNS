@@ -1,0 +1,4 @@
+zone "tiendadeelectronica.int" {
+    type master;
+    file "/etc/bind/zonas/db.tiendadeelectronica.int";
+};

@@ -134,3 +134,19 @@ Un registro **CNAME** se utiliza para crear un alias para un nombre de dominio. 
 **Ejemplo:**
 
 >mail.asir.com.    IN   CNAME   correo-asir.com.
+
+### 8. ¿Como puedo hacer para que la configuración de un contenedor DNS no se borre si creo otro contenedor?
+
+
+### 9. Añade una zona tiendadeelectronica.int en tu docker DNS que tenga
+
+### - www a la IP 172.16.0.1
+
+### - owncloud sea un CNAME de www
+
+### - un registro de texto con el contenido "1234ASDF"
+
+### - Comprueba que todo funciona con el comando "dig"
+
+### - Muestra en los logs que el servicio arranca correctamente
+
