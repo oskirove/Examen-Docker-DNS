@@ -22,3 +22,46 @@ Si queremos interactuar con las entradas y salidas del contenedor, debemos inici
 >docker run -i -t -a stdin -a stdout -a stderr
 
 Esto nos permitirá interactuar de manera completa con el contenedor, proporcionando entrada y viendo tanto la salida estándar como la de error.
+
+### 3. ¿Cómo sería un fichero docker-compose para que dos contenedores se comuniquen entre si en una red solo de ellos?
+
+En primer lugar debemos crear una red personalzada como se muestra acontinuación:
+
+>$ docker network create \
+  --driver=bridge \
+  --subnet=192.168.1.0/24 \
+  --ip-range=192.168.1.10/24 \
+  --gateway=192.168.1.1 \
+  bind9_red
+
+Tras crear la red que vamos a utilizar haremos que dos contenedores se comuniquen entre si en una misma red creando un fichero ```docker-compose.yml``` como el siguiente:
+
+```yml
+services:
+  bind9_1:
+    container_name: bind9_1
+    image: ubuntu/bind9
+    platform: linux/arm64
+    ports:
+      - "53:53"
+    networks:
+      - bind9_red
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+    
+  binn9_2:
+    container_name: bind9_2
+    image: ubuntu/bind9
+    platform: linux/arm64
+    ports:
+      - "53:53"
+    networks:
+      - bind9_red
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+
+networks:
+  bind9_red:
+```
